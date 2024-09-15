@@ -7,13 +7,12 @@
   color: white;
   display: flex;
   flex-direction: column;
-  font-family: arial, sans-serif;
-  border: 1px rgb(255, 255, 255) solid;
-
+  font-family: Arial, sans-serif;
+  border: 1px solid #fff;
   border-radius: 8px;
 }
-.container .weather {
-  position: relative;
+
+.weather {
   background-color: rgba(222, 220, 220, 0.5);
   backdrop-filter: blur(1px);
   color: #334d62;
@@ -23,36 +22,76 @@
 input[type="search"]:focus {
   border-color: #5e57ee;
 }
-.container ul {
+
+ul {
   list-style: none;
   margin: 0;
   padding: 0;
 }
-.container .searchBox {
+p {
+  color: #334d62;
+  margin-bottom: 0;
+}
+
+h1 {
+  color: #334d62;
+  margin-top: 0;
+}
+.temperature {
+  font-size: 48px;
+  font-weight: 700;
+}
+.unit {
+  font-size: 12px;
+  font-size: 16px;
+  font-weight: 400;
+  position: relative;
+  line-height: 1;
+  top: -20px;
+}
+h2 {
+  font-size: 16px;
+  margin-bottom: 40px;
+  color: #334d62;
+}
+
+.searchBox {
   margin: 24px 16px;
 }
-.container .btn {
+
+.btn {
   margin-left: 16px;
   background-color: #5e57ee;
   border: none;
 }
-.container .weatherContainer {
+
+.forecastWeather {
+  margin: 80px 0;
+}
+
+.weatherContainer {
   margin: 0;
   padding: 0;
 }
 
-.container .currentWeather img {
+.currentWeather img {
   max-width: 120px;
-  max-height: 120px;
+  max-height: 10px;
 }
-.container .currentWeather li {
-  font-size: 14px;
+
+.weatherDetails {
+  font-size: 18px;
+  padding: 20px;
+  color: #334d62;
+  font-weight: 500;
 }
-.container .forecastWeather img {
+
+.forecastWeather img {
   max-width: 64px;
   max-height: 64px;
 }
-.container .forecastWeather li {
+
+.forecastWeather li {
   font-size: 12px;
   padding: 16px;
 }
