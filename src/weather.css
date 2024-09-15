@@ -13,11 +13,13 @@
   height: 80vh;
 }
 
-.weather {
+ {
+  /*.weather {
   background-color: rgba(222, 220, 220, 0.5);
   backdrop-filter: blur(1px);
   color: #334d62;
   border-radius: 8px;
+}*/
 }
 
 input[type="search"]:focus {
@@ -66,10 +68,6 @@ h2 {
   border: none;
 }
 
-.forecastWeather {
-  margin: 80px 0;
-}
-
 .weatherContainer {
   margin: 0;
   padding: 0;
@@ -87,6 +85,9 @@ h2 {
   font-weight: 500;
 }
 
+/*.forecastWeather {
+  margin: 80px 0;
+}
 .forecastWeather img {
   max-width: 64px;
   max-height: 64px;
@@ -95,4 +96,4 @@ h2 {
 .forecastWeather li {
   font-size: 12px;
   padding: 16px;
-}
+}*/

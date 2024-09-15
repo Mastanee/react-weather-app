@@ -5,11 +5,12 @@ import "./weather.css";
 export default function Weather() {
   const [weatherData, setWeatherData] = useState({ ready: false });
   const [city, setCity] = useState(""); // Initialize the city state
+  const [unit, setUnit] = useState("celsius"); // Track current unit (°C or °F)
 
   function handelResponse(response) {
     setWeatherData({
       ready: true,
-      temperature: response.data.temperature.current,
+      temperatureCelsius: response.data.temperature.current, // Store in Celsius
       city: response.data.city,
       country: response.data.country,
       description: response.data.condition.description,
@@ -29,6 +30,22 @@ export default function Weather() {
 
   function handleCityChange(event) {
     setCity(event.target.value); // Update the city state with input value
+  }
+
+  function convertToFahrenheit(celsius) {
+    return (celsius * 9) / 5 + 32; // Convert Celsius to Fahrenheit
+  }
+
+  function handleUnitChange() {
+    setUnit(unit === "celsius" ? "fahrenheit" : "celsius"); // Toggle unit
+  }
+
+  function displayTemperature() {
+    if (unit === "celsius") {
+      return Math.round(weatherData.temperatureCelsius);
+    } else {
+      return Math.round(convertToFahrenheit(weatherData.temperatureCelsius));
+    }
   }
 
   if (weatherData.ready) {
@@ -53,10 +70,19 @@ export default function Weather() {
                 {weatherData.city}, {weatherData.country}
               </p>
               <h1>
-                <span className="temperature">
-                  {Math.round(weatherData.temperature)}
+                <span className="temperature">{displayTemperature()}</span>
+                <span className="unit">
+                  °{unit === "celsius" ? "C" : "F"} |{" "}
+                  <a
+                    href="/"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleUnitChange();
+                    }}
+                  >
+                    °{unit === "celsius" ? "F" : "C"}
+                  </a>
                 </span>
-                <span className="unit">°C</span>
               </h1>
               <h2>{weatherData.time}</h2>
               <ul>
@@ -72,60 +98,6 @@ export default function Weather() {
                     </div>
                   </div>
                 </li>
-              </ul>
-            </div>
-          </div>
-          <div className="col-3 weather text-center h-100">
-            <div className="forecastWeather">
-              <ul>
-                {[
-                  {
-                    day: "Wednesday, Sep 22",
-                    weather: "Sunny",
-                    temp: "12°C",
-                    icon: "https://cdn-icons-png.flaticon.com/128/8841/8841315.png",
-                  },
-                  {
-                    day: "Wednesday, Sep 22",
-                    weather: "Heavy Rain",
-                    temp: "11°C",
-                    icon: "https://cdn-icons-png.flaticon.com/128/8841/8841317.png",
-                  },
-                  {
-                    day: "Wednesday, Sep 22",
-                    weather: "Heavy Rain",
-                    temp: "11°C",
-                    icon: "https://cdn-icons-png.flaticon.com/128/414/414927.png",
-                  },
-                  {
-                    day: "Saturday, Sep 21",
-                    weather: "Cloudy",
-                    temp: "9°C",
-                    icon: "https://cdn-icons-png.flaticon.com/128/414/414927.png",
-                  },
-                  {
-                    day: "Sunday, Sep 22",
-                    weather: "Sunny",
-                    temp: "14°C",
-                    icon: "https://cdn-icons-png.flaticon.com/128/4064/4064276.png",
-                  },
-                ].map((forecast, index) => (
-                  <li
-                    key={index}
-                    className="d-flex justify-content-between align-items-center"
-                  >
-                    <div className="d-flex align-items-center">
-                      <img src={forecast.icon} alt={forecast.weather} />
-                      <div className="ms-3 text-start">
-                        <div>{forecast.day}</div>
-                        <div>{forecast.weather}</div>
-                      </div>
-                    </div>
-                    <div className="forecast-temperature">
-                      <span>{forecast.temp}</span>
-                    </div>
-                  </li>
-                ))}
               </ul>
             </div>
           </div>
