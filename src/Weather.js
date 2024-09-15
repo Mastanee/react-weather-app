@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-
 import axios from "axios";
 import "./weather.css";
 
 export default function Weather() {
   const [weatherData, setWeatherData] = useState({ ready: false });
+  const [city, setCity] = useState(""); // Initialize the city state
 
   function handelResponse(response) {
     setWeatherData({
@@ -19,29 +19,43 @@ export default function Weather() {
       time: new Date(response.data.time * 1000).toLocaleString(),
     });
   }
+
+  function handleSubmit(event) {
+    event.preventDefault(); // Prevent default form submission behavior
+    const apiKey = "8946076a3b1o36f41e14b4f240b5t2f6";
+    const apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
+    axios.get(apiUrl).then(handelResponse);
+  }
+
+  function handleCityChange(event) {
+    setCity(event.target.value); // Update the city state with input value
+  }
+
   if (weatherData.ready) {
     return (
       <div className="container px-0">
         <div className="row weatherContainer w-100 mx-0 h-100">
           <div className="col-9 h-100 currentWeather">
-            <form className="searchBox d-flex">
+            <form className="searchBox d-flex" onSubmit={handleSubmit}>
               <input
                 type="search"
                 placeholder="Enter a city..."
                 className="form-control"
-                autoFocus
+                autoFocus="on"
+                onChange={handleCityChange}
               />
-              <button className="btn btn-primary">Search</button>
+              <button type="submit" className="btn btn-primary">
+                Search
+              </button>
             </form>
             <div className="weatherItem ms-5">
               <p>
                 {weatherData.city}, {weatherData.country}
               </p>
               <h1>
-                {" "}
                 <span className="temperature">
                   {Math.round(weatherData.temperature)}
-                </span>{" "}
+                </span>
                 <span className="unit">°C</span>
               </h1>
               <h2>{weatherData.time}</h2>
@@ -119,25 +133,21 @@ export default function Weather() {
       </div>
     );
   } else {
-    const apiKey = "8946076a3b1o36f41e14b4f240b5t2f6";
-    let city = "Bern";
-    const apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
-
-    axios.get(apiUrl).then(handelResponse);
     return (
       <div className="container px-0">
         <div className="col-9 h-100 currentWeather">
-          <form className="searchBox d-flex">
+          <form className="searchBox d-flex" onSubmit={handleSubmit}>
             <input
               type="search"
               placeholder="Enter a city..."
               className="form-control"
               autoFocus
+              onChange={handleCityChange}
             />
-            <button className="btn btn-primary">Search</button>
+            <button type="submit" className="btn btn-primary">
+              Search
+            </button>
           </form>
-
-          <p>The tempereture is loading...</p>
         </div>
       </div>
     );
