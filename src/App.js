@@ -13,8 +13,8 @@ function App() {
         </a>{" "}
         and it is open-sourced on
         <a href="https://github.com/Mastanee/react-weather-app">Github</a> and
-        hosted on <a href="https://peaceful-palmier-0b7b31.netlify.app"></a>{" "}
-        Netlify.
+        hosted on{" "}
+        <a href="https://peaceful-palmier-0b7b31.netlify.app">Netlify</a>.
       </p>
     </div>
   );
