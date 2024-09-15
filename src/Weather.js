@@ -4,41 +4,41 @@ import "./weather.css";
 export default function Weather() {
   return (
     <div className="container px-0">
-      <div className="row weatherContainer w-100 mx-0 ">
+      <div className="row weatherContainer w-100 mx-0 h-100">
         <div className="col-9 h-100">
-          <h1>hello weather</h1>
+          <h1>
+            <div className="currentWeather h-100 d-flex flex-column">
+              <from className="searchBox d-flex ">
+                <input
+                  type="search"
+                  placeholder="Enter a city..."
+                  className="form-control "
+                  autoFocus="on"
+                />
+                <button className="btn btn-primary ">Search</button>
+              </from>
+
+              <h1>11°C</h1>
+              <ul>
+                <li>
+                  <div className="d-flex ">
+                    <img
+                      src="https://cdn-icons-png.flaticon.com/128/8841/8841317.png"
+                      alt="Rainy"
+                    />
+                    <div className="ms-3 text-start">
+                      <div>Thursday, Sep 22</div>
+                      <div>Description: Heavy rain</div>
+                      <div>Humidity: 76%</div>
+                      <div>Wind: 13 km/h</div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </h1>
         </div>
         <div className="col-3 weather text-center h-100">
-          <div className="currentWeather h-100 d-flex flex-column">
-            <from className="searchBox d-flex ">
-              <input
-                type="search"
-                placeholder="Enter a city..."
-                className="form-control "
-                autoFocus="on"
-              />
-              <button className="btn btn-primary ">Search</button>
-            </from>
-
-            <h1>11°C</h1>
-            <ul>
-              <li>
-                <div className="d-flex ">
-                  <img
-                    src="https://cdn-icons-png.flaticon.com/128/8841/8841317.png"
-                    alt="Rainy"
-                  />
-                  <div className="ms-3 text-start">
-                    <div>Thursday, Sep 22</div>
-                    <div>Description: Heavy rain</div>
-                    <div>Humidity: 76%</div>
-                    <div>Wind: 13 km/h</div>
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </div>
-          <hr />
           <div className="forecastWeather">
             <ul>
               <li className="d-flex justify-content-between align-items-center">
