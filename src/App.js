@@ -7,7 +7,7 @@ function App() {
       <Weather />
       <footer>
         {" "}
-        This footerroject was coded by{" "}
+        This project was coded by{" "}
         <a href="https://www.shecodes.io/graduates/51244-mastane-kachloo">
           Mastane Kachloo
         </a>{" "}
