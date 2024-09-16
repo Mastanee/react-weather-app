@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
+
+import ConvertDate from "./ConvertDate";
+
 import "./weather.css";
 
 export default function Weather() {
@@ -17,7 +20,7 @@ export default function Weather() {
       humidity: response.data.temperature.humidity,
       wind: response.data.wind.speed,
       icon: response.data.condition.icon_url,
-      time: new Date(response.data.time * 1000).toLocaleString(),
+      time: new Date(response.data.time * 1000),
     });
   }
 
@@ -69,6 +72,9 @@ export default function Weather() {
               <p>
                 {weatherData.city}, {weatherData.country}
               </p>
+              <h2>
+                <ConvertDate date={weatherData.time} />
+              </h2>
               <h1>
                 <span className="temperature">{displayTemperature()}</span>
                 <span className="unit">
@@ -84,7 +90,7 @@ export default function Weather() {
                   </a>
                 </span>
               </h1>
-              <h2>{weatherData.time}</h2>
+
               <ul>
                 <li>
                   <div className="d-flex">
@@ -108,7 +114,7 @@ export default function Weather() {
     return (
       <div className="container px-0">
         <div className="col-9 h-100 currentWeather">
-          <form className="searchBox d-flex" onSubmit={handleSubmit}>
+          <form className="searchBox d-flex " onSubmit={handleSubmit}>
             <input
               type="search"
               placeholder="Enter a city..."
