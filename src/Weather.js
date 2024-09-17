@@ -45,7 +45,7 @@ export default function Weather(props) {
     <div className="container px-0">
       <div className="row weatherContainer w-100 mx-0 h-100">
         <div className="col-9 h-100 currentWeather">
-          <form className="searchBox d-flex" onSubmit={handleSubmit}>
+          <form className="  searchBox d-flex" onSubmit={handleSubmit}>
             <input
               type="search"
               placeholder="Enter a city..."

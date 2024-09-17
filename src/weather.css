@@ -21,7 +21,7 @@
 }*/
 
 input[type="search"]:focus {
-  border-color: #5e57ee;
+  border-color: #5e75ee;
 }
 
 ul {
@@ -62,7 +62,7 @@ h2 {
 
 .btn {
   margin-left: 16px;
-  background-color: #5e57ee;
+  background-color: #5e75ee;
   border: none;
 }
 
