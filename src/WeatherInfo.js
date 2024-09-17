@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import ConvertDate from "./ConvertDate";
 
+import WeatherIcon from "./WeatherIcon";
+
 export default function WeatherInfo(props) {
   const [unit, setUnit] = useState("celsius");
   function convertToFahrenheit(celsius) {
@@ -45,7 +47,10 @@ export default function WeatherInfo(props) {
       <ul>
         <li>
           <div className="d-flex">
-            <img src={props.info.icon} alt={props.info.description} />
+            <div className="mt-4">
+              <WeatherIcon iconCode={props.info.icon} size={64} />
+            </div>
+
             <div className="weatherDetails ms-3 text-start">
               <div className="text-capitalize">
                 Description: {props.info.description}
